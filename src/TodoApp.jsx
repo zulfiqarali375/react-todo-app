@@ -26,8 +26,9 @@ const TodoApp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center p-4">
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-500 flex justify-center p-4">
+      {/* 1. Added 'mt-10' for mobile top margin and removed 'items-center' to keep it at top */}
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-8 mt-10 h-fit">
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center tracking-tight">
           My Tasks
         </h1>
@@ -57,12 +58,16 @@ const TodoApp = () => {
             todo.map((todos, index) => (
               <li
                 key={index}
-                className="flex items-center justify-between bg-gray-50 p-4 rounded-xl group hover:bg-gray-100 transition-colors border border-gray-100"
+                className="flex items-center justify-between bg-white p-4 rounded-xl border border-gray-100 shadow-sm"
               >
-                <span className="text-gray-700 font-medium">{todos.text}</span>
+                <span className="text-gray-700 font-medium tracking-tight">
+                  {todos.text}
+                </span>
+
+                {/* 2. Removed 'opacity-0' and 'group-hover' - Now always visible with a nice BG */}
                 <button
                   onClick={() => handleDelete(index)}
-                  className="text-red-400 hover:text-red-600 font-medium text-sm transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-700 font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer active:scale-95"
                 >
                   Delete
                 </button>
